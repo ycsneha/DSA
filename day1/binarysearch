@@ -1,0 +1,44 @@
+package com.palle;
+
+import java.util.Scanner;
+
+public class BinarySearch {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the element to be searched:");
+        int element = sc.nextInt();
+        
+        int mid = BinarySearch(element);
+        
+        if (mid == -1) {
+            System.out.println("Element " + element + " is not found.");
+        } else {
+            System.out.println("Element " + element + " is present at the position " + mid);
+        }
+        
+        sc.close();
+    }
+
+    public static int BinarySearch(int search) {
+        int arr[] = {12, 15, 72, 85,90};
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+           // int mid = low + (high - low) / 2;//because int capacity is 2147483647(int low(a)), it is safe
+         int mid=(low+high)/2;
+            if (arr[mid] == search) {
+                return mid;
+            } else if (arr[mid] < search) {
+                low = mid + 1;  // ✅ Just update left
+            } else {
+                high = mid - 1; // ✅ Just update right
+            }
+        }
+
+        return -1; // Not found
+    }
+}
+
+
