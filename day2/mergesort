@@ -1,0 +1,55 @@
+package com.palle;
+
+public class MergeSort {
+
+    public static void merge(int[] a, int lb, int mid, int ub) {
+        int i = lb;
+        int j = mid + 1;
+        int k = lb;
+        int[] b = new int[a.length];
+
+        // Merge both halves into b[]
+        while (i <= mid && j <= ub) {
+            if (a[i] < a[j]) {
+                b[k++] = a[i++];
+            } else {
+                b[k++] = a[j++];
+            }
+        }
+
+        // Copy remaining elements from left half
+        while (i <= mid) {
+            b[k++] = a[i++];
+        }
+
+        // Copy remaining elements from right half
+        while (j <= ub) {
+            b[k++] = a[j++];
+        }
+
+        // Copy b[] to original a[]
+        for ( k=lb; k <= ub; k++) {
+            a[k] = b[k];
+        }
+    }
+
+    public static void mergeSort(int[] a, int lb, int ub) {
+        if (lb < ub) {
+            int mid = (lb + ub) / 2;
+            mergeSort(a, lb, mid);
+            mergeSort(a, mid + 1, ub);
+            merge(a, lb, mid, ub);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] a = {38, 27, 43, 3, 9, 82, 10};
+
+        mergeSort(a, 0, a.length - 1);
+
+        System.out.print("Sorted Array: ");
+        for (int num : a) {
+            System.out.print(num + " ");
+        }
+    }
+}
