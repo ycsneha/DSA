@@ -1,0 +1,24 @@
+package com.palle;
+
+public class duplicateString {
+
+	public static void main(String[] args) {
+		String s="Java Programming";
+		int count[]= new int[256];
+		for( int i= 0;i<s.length();i++)
+		{
+			char ch= s.charAt(i);
+			count[ch]++;
+		}
+		for(int i=0;i<count.length;i++)
+		{
+//			char ch = 'A';
+//			if(count[i]>1&&(ch>='A'&& ch<='Z'))
+			if(count[i]>1&&(count[i]!=' '))
+			{
+				System.out.println((char)i);
+			}
+		}
+	}
+
+}
