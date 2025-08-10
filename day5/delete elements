@@ -1,0 +1,23 @@
+package com.palle;
+
+public class DeleteElement {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40};
+        int index = 1;
+
+        int[] newArr = new int[arr.length - 1];
+
+        for (int i = 0; i < index; i++) {
+            newArr[i] = arr[i];
+        }
+
+        for (int i = index + 1; i < arr.length; i++) {
+            newArr[i - 1] = arr[i];
+        }
+
+        System.out.print("After deletion: ");
+        for (int val : newArr) {
+            System.out.print(val + " ");
+        }
+    }
+}
