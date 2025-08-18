@@ -1,0 +1,34 @@
+/*LeetCode 487:Problem Statement:
+You are given a binary array nums. You may flip at most one 0 to 1. Return the maximum number of consecutive 1s in the array after possibly flipping one zero.*/
+
+package com.palle;
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int left = 0, zeroCount = 0, maxLen = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+            if (nums[right] == 0) {
+                zeroCount++;
+            }
+
+            while (zeroCount > 1) {
+                if (nums[left] == 0) {
+                    zeroCount--;
+                }
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
+    public static void main(String[] args)
+    {
+    	Solution sol=new Solution();
+    	int[] arr= {1,1,1,0,1,1,0};
+    	int len=sol.findMaxConsecutiveOnes(arr);
+    	System.out.println("The maximum consecutive 1's are "+len);
+    }
+}
