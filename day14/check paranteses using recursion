@@ -1,0 +1,18 @@
+package com.palle;
+
+public class ValidParenthesesRecursion {
+	public static boolean isValid(String s) {
+        if (s.isEmpty()) return true;
+        String replaced = s.replace("()", "")
+                           .replace("{}", "")
+                           .replace("[]", "");
+        if (replaced.equals(s)) return false; // no change, invalid
+        return isValid(replaced); // recurse with smaller string
+    }
+
+    public static void main(String[] args) {
+        String s = "{[()]}";
+        System.out.println(isValid(s)); // true
+    }
+
+}
